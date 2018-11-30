@@ -4,7 +4,7 @@
  		var headerCode = '<header id="header-main" class="header">\
             <div class="container">\
                 <div class="logo">\
-                    <a href="index.html">\
+                    <a href="dev-sitemap.html">\
                         <img src="img/logo.png" alt=" Four Wheel Campers">\
                     </a>\
                 </div>\
