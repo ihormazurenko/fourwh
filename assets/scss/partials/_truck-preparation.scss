@@ -5,28 +5,72 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 131px;
 	
 	div {
 		display: block;
 	}
 
 	.image {
-		
+		img {
+			width: 100%;
+		}
+
 		@media (min-width: $screen-md-min) {
 			width: 60%;
+		}
+		@media (min-width: $screen-xl-min) {
+			width: 70%;
+			margin-left: -20%;
 		}
 
 	}
 	.text {
 		@media (min-width: $screen-md-min) {
 			width: 40%;
+			padding-right: 0;
+			padding-left: 5%;
+		}
+		@media (min-width: $screen-xl-min) {
+			width: 50%;
 		}
 	}
 
-	@media (min-width: $screen-md-min) {
-		// flex-wrap: no-wrap;
-		&:nth-child(odd) {
+	&:nth-child(odd) {
+		@media (min-width: $screen-md-min) {
 			flex-direction: row-reverse;		
+		}
+
+		.image {
+			
+				@media (min-width: $screen-xl-min) {
+					width: 70%;
+					margin-right: -20%;
+					margin-left: 0%;
+				}
+			
+		}
+		.text {
+			padding-right: 5%;
+			padding-left: 0;
+		}
+	}
+
+	
+
+	h2 {
+		margin-bottom: 40px;
+		position: relative;
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 85px;
+			height: 4px;
+			background: $light-blue;
+			position: absolute;
+			left: 0;
+			bottom:-15px;
 		}
 	}
 }
