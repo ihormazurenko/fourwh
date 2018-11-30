@@ -59,7 +59,7 @@
 
 	
 
-	h2 {
+	h3 {
 		margin-bottom: 40px;
 		position: relative;
 		&:after {
@@ -70,7 +70,7 @@
 			background: $light-blue;
 			position: absolute;
 			left: 0;
-			bottom:-15px;
+			bottom:-20px;
 		}
 	}
 }
