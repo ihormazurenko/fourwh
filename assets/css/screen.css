@@ -191,9 +191,11 @@ img {
   -o-user-select: none;
   -khtml-user-select: none;
   user-select: none;
+  max-width: 100%;
+  height: auto;
 }
 
-/* line 63, ../scss/global/_global.scss */
+/* line 65, ../scss/global/_global.scss */
 .container {
   max-width: 1210px;
   width: 100%;
@@ -201,7 +203,7 @@ img {
   padding: 0 20px;
 }
 
-/* line 70, ../scss/global/_global.scss */
+/* line 72, ../scss/global/_global.scss */
 .vertical-align .container {
   display: table;
   width: 100%;
@@ -209,7 +211,7 @@ img {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-/* line 77, ../scss/global/_global.scss */
+/* line 79, ../scss/global/_global.scss */
 .vertical-align .container-box {
   display: table-cell;
   width: 100%;
@@ -217,65 +219,70 @@ img {
   vertical-align: middle;
 }
 
-/* line 85, ../scss/global/_global.scss */
+/* line 87, ../scss/global/_global.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+/* line 91, ../scss/global/_global.scss */
 .content {
   font-size: 20px;
   line-height: 1.6;
 }
-/* line 88, ../scss/global/_global.scss */
+/* line 94, ../scss/global/_global.scss */
 .content * {
   margin-bottom: 15px;
 }
-/* line 90, ../scss/global/_global.scss */
+/* line 96, ../scss/global/_global.scss */
 .content *:last-child {
   margin-bottom: 0;
 }
-/* line 94, ../scss/global/_global.scss */
+/* line 100, ../scss/global/_global.scss */
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
 }
-/* line 98, ../scss/global/_global.scss */
+/* line 104, ../scss/global/_global.scss */
 .content h1 {
   font-size: 55px;
 }
-/* line 99, ../scss/global/_global.scss */
+/* line 105, ../scss/global/_global.scss */
 .content h2 {
   font-size: 45px;
 }
-/* line 100, ../scss/global/_global.scss */
+/* line 106, ../scss/global/_global.scss */
 .content h3 {
   font-size: 35px;
 }
-/* line 101, ../scss/global/_global.scss */
+/* line 107, ../scss/global/_global.scss */
 .content h4 {
   font-size: 25px;
 }
-/* line 102, ../scss/global/_global.scss */
+/* line 108, ../scss/global/_global.scss */
 .content h5 {
   font-size: 22px;
 }
-/* line 103, ../scss/global/_global.scss */
+/* line 109, ../scss/global/_global.scss */
 .content h6 {
   font-size: 20px;
 }
-/* line 104, ../scss/global/_global.scss */
+/* line 110, ../scss/global/_global.scss */
 .content a {
   color: #212020;
 }
-/* line 106, ../scss/global/_global.scss */
+/* line 112, ../scss/global/_global.scss */
 .content a:hover {
   opacity: 0.7;
   text-decoration: none;
 }
-/* line 112, ../scss/global/_global.scss */
+/* line 118, ../scss/global/_global.scss */
 .content ul > li {
   position: relative;
   padding-left: 25px;
   margin-bottom: 1px;
   list-style-position: outside;
 }
-/* line 117, ../scss/global/_global.scss */
+/* line 123, ../scss/global/_global.scss */
 .content ul > li:before {
   position: absolute;
   display: inline-block;
@@ -295,19 +302,19 @@ img {
   border-radius: 10px;
   vertical-align: top;
 }
-/* line 133, ../scss/global/_global.scss */
+/* line 139, ../scss/global/_global.scss */
 .content ol {
   position: relative;
   counter-reset: myCounter;
 }
-/* line 136, ../scss/global/_global.scss */
+/* line 142, ../scss/global/_global.scss */
 .content ol > li {
   position: relative;
   padding-left: 30px;
   margin-bottom: 1px;
   list-style-position: outside;
 }
-/* line 141, ../scss/global/_global.scss */
+/* line 147, ../scss/global/_global.scss */
 .content ol > li:before {
   position: absolute;
   display: inline-block;
@@ -317,7 +324,7 @@ img {
   content: counter(myCounter) ". ";
   padding-right: 10px;
 }
-/* line 152, ../scss/global/_global.scss */
+/* line 158, ../scss/global/_global.scss */
 .content blockquote {
   max-width: 640px;
   margin-left: auto;
@@ -326,147 +333,147 @@ img {
   text-align: left;
   border-left: 2px solid #0b0b0b;
 }
-/* line 160, ../scss/global/_global.scss */
+/* line 166, ../scss/global/_global.scss */
 .content img {
   max-width: 100%;
   height: auto;
 }
-/* line 163, ../scss/global/_global.scss */
+/* line 169, ../scss/global/_global.scss */
 .content img.alignleft {
   float: left;
   margin: 4px 12px 12px 0;
 }
-/* line 167, ../scss/global/_global.scss */
+/* line 173, ../scss/global/_global.scss */
 .content img.alignright {
   float: right;
   margin: 4px 0 12px 12px;
 }
-/* line 171, ../scss/global/_global.scss */
+/* line 177, ../scss/global/_global.scss */
 .content img.aligncenter {
   display: block;
   margin: 0 auto 12px;
   clear: both;
 }
-/* line 177, ../scss/global/_global.scss */
+/* line 183, ../scss/global/_global.scss */
 .inverse .content {
   color: white;
 }
-/* line 181, ../scss/global/_global.scss */
+/* line 187, ../scss/global/_global.scss */
 .inverse .content ul > li:before {
   background-color: white;
 }
-/* line 187, ../scss/global/_global.scss */
+/* line 193, ../scss/global/_global.scss */
 .content.big {
   font-size: 22px;
 }
-/* line 189, ../scss/global/_global.scss */
+/* line 195, ../scss/global/_global.scss */
 .content.big h1 {
   font-size: 66px;
 }
-/* line 190, ../scss/global/_global.scss */
+/* line 196, ../scss/global/_global.scss */
 .content.big h2 {
   font-size: 54px;
 }
-/* line 191, ../scss/global/_global.scss */
+/* line 197, ../scss/global/_global.scss */
 .content.big h3 {
   font-size: 42px;
 }
-/* line 192, ../scss/global/_global.scss */
+/* line 198, ../scss/global/_global.scss */
 .content.big h4 {
   font-size: 30px;
 }
-/* line 193, ../scss/global/_global.scss */
+/* line 199, ../scss/global/_global.scss */
 .content.big h5 {
   font-size: 26.4px;
 }
-/* line 194, ../scss/global/_global.scss */
+/* line 200, ../scss/global/_global.scss */
 .content.big h6 {
   font-size: 24px;
 }
-/* line 197, ../scss/global/_global.scss */
+/* line 203, ../scss/global/_global.scss */
 .content.big ul > li:before {
   width: 6px;
   height: 6px;
   margin-top: 13px;
   margin-right: 13px;
 }
-/* line 206, ../scss/global/_global.scss */
+/* line 212, ../scss/global/_global.scss */
 .content.biggest {
   font-size: 30px;
 }
-/* line 208, ../scss/global/_global.scss */
+/* line 214, ../scss/global/_global.scss */
 .content.biggest h1 {
   font-size: 88px;
 }
-/* line 209, ../scss/global/_global.scss */
+/* line 215, ../scss/global/_global.scss */
 .content.biggest h2 {
   font-size: 72px;
 }
-/* line 210, ../scss/global/_global.scss */
+/* line 216, ../scss/global/_global.scss */
 .content.biggest h3 {
   font-size: 56px;
 }
-/* line 211, ../scss/global/_global.scss */
+/* line 217, ../scss/global/_global.scss */
 .content.biggest h4 {
   font-size: 40px;
 }
-/* line 212, ../scss/global/_global.scss */
+/* line 218, ../scss/global/_global.scss */
 .content.biggest h5 {
   font-size: 35.2px;
 }
-/* line 213, ../scss/global/_global.scss */
+/* line 219, ../scss/global/_global.scss */
 .content.biggest h6 {
   font-size: 32px;
 }
-/* line 215, ../scss/global/_global.scss */
+/* line 221, ../scss/global/_global.scss */
 .content.biggest ol > li {
   padding-left: 40px;
 }
-/* line 224, ../scss/global/_global.scss */
+/* line 230, ../scss/global/_global.scss */
 .content.biggest ul > li:before {
   width: 8px;
   height: 8px;
   margin-top: 18px;
   margin-right: 18px;
 }
-/* line 234, ../scss/global/_global.scss */
+/* line 240, ../scss/global/_global.scss */
 .align-center .content {
   text-align: center;
 }
-/* line 237, ../scss/global/_global.scss */
+/* line 243, ../scss/global/_global.scss */
 .align-center .content ul > li, .align-center .content ol > li {
   padding-left: 0;
 }
-/* line 239, ../scss/global/_global.scss */
+/* line 245, ../scss/global/_global.scss */
 .align-center .content ul > li:before, .align-center .content ol > li:before {
   position: relative;
   top: auto;
   left: auto;
 }
 @media all and (max-width: 1024px) {
-  /* line 85, ../scss/global/_global.scss */
+  /* line 91, ../scss/global/_global.scss */
   .content {
     font-size: 19px;
   }
-  /* line 249, ../scss/global/_global.scss */
+  /* line 255, ../scss/global/_global.scss */
   .content.big {
     font-size: 21px;
   }
-  /* line 252, ../scss/global/_global.scss */
+  /* line 258, ../scss/global/_global.scss */
   .content.biggest {
     font-size: 24px;
   }
 }
 @media all and (max-width: 767px) {
-  /* line 85, ../scss/global/_global.scss */
+  /* line 91, ../scss/global/_global.scss */
   .content {
     font-size: 18px;
   }
-  /* line 258, ../scss/global/_global.scss */
+  /* line 264, ../scss/global/_global.scss */
   .content.big {
     font-size: 20px;
   }
-  /* line 261, ../scss/global/_global.scss */
+  /* line 267, ../scss/global/_global.scss */
   .content.biggest {
     font-size: 22px;
   }
@@ -475,7 +482,7 @@ img {
 /*----------------------------------------------------------------------------------*/
 /*-------------------------------------WRAPPER--------------------------------------*/
 /*----------------------------------------------------------------------------------*/
-/* line 270, ../scss/global/_global.scss */
+/* line 276, ../scss/global/_global.scss */
 .wrapper {
   position: relative;
 }
@@ -4129,4 +4136,33 @@ a.more-info-btn.open .arrow-down,
   min-width: 220px;
   padding-top: 16px;
   padding-bottom: 16px;
+}
+
+/* line 4, ../scss/partials/_truck-preparation.scss */
+.prep-step {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* line 9, ../scss/partials/_truck-preparation.scss */
+.prep-step div {
+  display: block;
+}
+@media (min-width: 992px) {
+  /* line 13, ../scss/partials/_truck-preparation.scss */
+  .prep-step .image {
+    width: 60%;
+  }
+}
+@media (min-width: 992px) {
+  /* line 20, ../scss/partials/_truck-preparation.scss */
+  .prep-step .text {
+    width: 40%;
+  }
+}
+@media (min-width: 992px) {
+  /* line 28, ../scss/partials/_truck-preparation.scss */
+  .prep-step:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
 }
