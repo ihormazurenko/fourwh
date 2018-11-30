@@ -3,6 +3,7 @@
 
 /*import global styles */
 @import 'global/global';
+@import 'global/layout';
 @import 'fonts/fonts';
 @import 'global/buttons';
 @import 'global/magnific';
@@ -16,6 +17,7 @@
 @import 'partials/home';
 @import 'partials/slider';
 @import 'partials/dealer';
-@import 'partials/truck-details';
+@import 'partials/truck-selector'; 
+@import 'partials/truck-preparation';
 
 
