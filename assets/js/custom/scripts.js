@@ -59,6 +59,47 @@
                     }
                 }
             });
+
+            // var galleryThumbs = new Swiper('.gallery-thumbs', {
+            //     spaceBetween: 10,
+            //     slidesPerView: 4,
+            //     freeMode: true,
+            //     watchSlidesVisibility: true,
+            //     watchSlidesProgress: true,
+            // });
+            // var galleryTop = new Swiper('.gallery-top', {
+            //     spaceBetween: 10,
+            //     navigation: {
+            //         nextEl: '.swiper-button-next',
+            //         prevEl: '.swiper-button-prev',
+            //     },
+            //     thumbs: {
+            //         swiper: galleryThumbs
+            //     }
+            // });
+
+            //loop
+            // var galleryThumbs = new Swiper('.gallery-thumbs', {
+            //     spaceBetween: 10,
+            //     slidesPerView: 4,
+            //     loop: true,
+            //     freeMode: true,
+            //     loopedSlides: 5, //looped slides should be the same
+            //     watchSlidesVisibility: true,
+            //     watchSlidesProgress: true,
+            // });
+            // var galleryTop = new Swiper('.gallery-top', {
+            //     spaceBetween: 10,
+            //     loop:true,
+            //     loopedSlides: 5, //looped slides should be the same
+            //     navigation: {
+            //         nextEl: '.swiper-button-next',
+            //         prevEl: '.swiper-button-prev',
+            //     },
+            //     thumbs: {
+            //         swiper: galleryThumbs,
+            //     },
+            // });
         }
 
 
@@ -77,14 +118,14 @@
 
 
         //for More Info btn
-        if ($('.service-box').length && $('.more-info-btn').length) {
+        if (($('.service-box').length || $('.item-box').length) && $('.more-info-btn').length) {
             $('.more-info-btn').on('click', function (e) {
                 e.preventDefault();
 
                 if ($(this).hasClass('open')) {
-                    $(this).removeClass('open').next('.service-info-box.more').slideUp(350);
+                    $(this).removeClass('open').next('.more').slideUp(350);
                 } else {
-                    $(this).addClass('open').next('.service-info-box.more').slideDown(350);
+                    $(this).addClass('open').next('.more').slideDown(350);
                 }
             });
         }
@@ -106,46 +147,78 @@
             })
         }
 
+        // for anchor nav
+        var stickyNav = $('.anchor-nav-box');
+
+        if (stickyNav && stickyNav.length) {
+            var offset = stickyNav.offset().top,
+                stickyNavLinks = stickyNav.find('.anchor-nav').find('a');
+
+            //Handle Active Link on Sroll
+            function onScroll(event) {
+                if (stickyNavLinks && stickyNavLinks.length) {
+                    var scrollPos = $(document).scrollTop();
+                    stickyNav.find('a[href^="#"]').each(function () {
+                        var currLink = $(this);
+                        var refElement = $(currLink.attr("href"));
+                        if (refElement && refElement.length) {
+                            var currSection = (refElement.position().top <= (scrollPos)) && (refElement.position().top + refElement.outerHeight()) > (scrollPos);
+                            // console.log(refElement.position().top +'<='+ scrollPos +' && '+ refElement.position().top + '>' + refElement.position().top);
+                            if (currSection) {
+                                stickyNavLinks.removeClass("active");
+                                currLink.addClass("active");
+                            }
+                            else {
+                                currLink.removeClass("active");
+                            }
+                        }
+                    });
+                }
+            }
+
+            $(document).on("scroll", onScroll);
+        }
+
+
+
         function scrollEffects() {
             var $window = $(window),
                 html = $('html'),
                 body = $('body'),
                 header = $('#header-main'),
-                breadcrumbsBar = $('.breadcrumbs-bar'),
-                anchorNav = $('.page-nav.sticky-nav'),
-                lastScrollTop = 0,
-                triggerPlus = 0;
-
-            setTimeout(function () {
-                if ($window.width() < 1025) {
-                    if (breadcrumbsBar.length) {
-                        header.addClass('fixed');
-                        breadcrumbsBar.css('opacity', '1');
-                    }
-                }
-            }, 5000);
+                anchorNav = $('.anchor-nav-box'),
+                lastScrollTop = 0;
 
             $window.on('load resize', function () {
+                var currentPos = $window.scrollTop();
+
                 body.removeClass('direction-up direction-down');
                 header.removeClass('fixed');
 
                 setTimeout(function () {
                     var windowWidth = $window.width(),
                         headerOffset = header.offset().top,
-                        headerHeight = header.outerHeight();
+                        headerHeight = header.outerHeight(),
+                        anchorNavHeight = anchorNav.outerHeight();
 
                     if (anchorNav.length) {
                         var anchorNavOffset = anchorNav.offset().top;
                     }
 
+                    if (currentPos > headerHeight) {
+                        // console.log(currentPos + '>' +headerHeight);
+                        // if (!(body.hasClass('direction-down'))) {
+                        //     body.removeClass('direction-up').addClass('direction-down');
+                        // }
+                        if (!(anchorNav.hasClass('affix'))) {
+                            anchorNav.addClass('affix');
+                            anchorNav.next().css('margin-top', anchorNavHeight);
+                        }
+                    }
+
                     if (windowWidth < 1025) {
                         // for mobile & tablet
-                        var headerTrigger = headerOffset + headerHeight + triggerPlus;
-
-                        if (breadcrumbsBar.length) {
-                            header.addClass('fixed');
-                            breadcrumbsBar.css('opacity', '1');
-                        }
+                        var headerTrigger = headerOffset + headerHeight;
 
                         $window.unbind('scroll');
                         $window.on('scroll', function () {
@@ -153,36 +226,48 @@
 
                             if (lastScrollTop > top) {
                                 // scroll UP
-                                if (breadcrumbsBar.length) {
+                                if (top == 0 && top < 2 * headerTrigger) {
+                                    if (body.hasClass('direction-up')) {
+                                        body.removeClass('direction-up');
+                                        header.removeClass('fixed');
+                                    }
+                                } else if (top != 0 && top > 2 * headerTrigger) {
                                     if (!(body.hasClass('direction-up'))) {
                                         body.removeClass('direction-down').addClass('direction-up');
                                     }
-                                } else {
-                                    if (top == 0 && top < 2 * headerTrigger) {
-                                        if (body.hasClass('direction-up')) {
-                                            body.removeClass('direction-up');
-                                            header.removeClass('fixed');
-                                        }
-                                    } else if (top != 0 && top > 2 * headerTrigger) {
-                                        if (!(body.hasClass('direction-up'))) {
-                                            body.removeClass('direction-down').addClass('direction-up');
+                                }
+
+                                //for anchor nav
+                                if (anchorNav.length) {
+                                    var anchorNavTrigger = headerHeight - 65;
+
+                                    if (top < anchorNavTrigger) {
+                                        if (anchorNav.hasClass('affix')) {
+                                            anchorNav.removeClass('affix');
+                                            anchorNav.next().css('margin-top', '0');
                                         }
                                     }
                                 }
                             } else {
                                 // scroll DOWN
-                                if (breadcrumbsBar.length) {
+                                if (top > 2 * headerTrigger) {
                                     if (!(body.hasClass('direction-down'))) {
                                         body.removeClass('direction-up').addClass('direction-down');
+                                        // setTimeout(function () {
+                                        //     header.addClass('fixed');
+                                        // },400);
                                     }
-                                } else {
-                                    if (top > 2 * headerTrigger) {
-                                        if (!(body.hasClass('direction-down'))) {
-                                            body.removeClass('direction-up').addClass('direction-down');
-                                            setTimeout(function () {
-                                                header.addClass('fixed');
-                                            },400);
-                                        }
+                                }
+                            }
+
+                            //for anchor nav
+                            if (anchorNav.length) {
+                                var anchorNavTrigger = anchorNavOffset;
+
+                                if (top > anchorNavTrigger) {
+                                    if (!(anchorNav.hasClass('affix'))) {
+                                        anchorNav.addClass('affix');
+                                        anchorNav.next().css('margin-top', anchorNavHeight);
                                     }
                                 }
                             }
@@ -191,11 +276,7 @@
                         });
                     } else {
                         //for desktop
-                        var headerTrigger = headerOffset + headerHeight + triggerPlus;
-
-                        if (breadcrumbsBar.length) {
-                            header.removeClass('fixed');
-                        }
+                        var headerTrigger = headerOffset + headerHeight;
 
                         $window.unbind('scroll');
                         $window.on('scroll', function () {
@@ -217,11 +298,12 @@
 
                                 //for anchor nav
                                 if (anchorNav.length) {
-                                    var anchorNavTrigger = anchorNavOffset - headerOffset - headerHeight;
+                                    var anchorNavTrigger = headerHeight;
 
                                     if (top < anchorNavTrigger) {
                                         if (anchorNav.hasClass('affix')) {
                                             anchorNav.removeClass('affix');
+                                            anchorNav.next().css('margin-top', '0');
                                         }
                                     }
                                 }
@@ -231,9 +313,9 @@
                                 if (top > 2 * headerTrigger) {
                                     if (!(body.hasClass('direction-down'))) {
                                         body.removeClass('direction-up').addClass('direction-down');
-                                        setTimeout(function () {
-                                            header.addClass('fixed');
-                                        },350);
+                                        // setTimeout(function () {
+                                        //     header.addClass('fixed');
+                                        // },350);
                                     }
                                 }
 
@@ -244,6 +326,7 @@
                                     if (top > anchorNavTrigger) {
                                         if (!(anchorNav.hasClass('affix'))) {
                                             anchorNav.addClass('affix');
+                                            anchorNav.next().css('margin-top', anchorNavHeight);
                                         }
                                     }
                                 }
