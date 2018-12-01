@@ -23,7 +23,7 @@
                             </ul>\
                         </li>\
                         <li><a href="events.html">Events</a></li>\
-                        <li><a href="support.html">Support</a></li>\
+                        <li><a href="support.html">Support</a>\
                             <ul class="sub-menu">\
                                 <li class="menu-item"><a href="#">Schedule A Service</a></li>\
                                 <li class="menu-item"><a href="#">Services Performed</a></li>\
@@ -34,7 +34,7 @@
                                 <li class="menu-item"><a href="faq.html">FAQs  Fast Facts</a></li>\
                                 <li class="menu-item"><a href="owners-manual.html">Owners Manuals</a></li>\
                                 <li class="menu-item"><a href="#">Warranties</a></li>\
-                            </ul>\
+                            </ul></li>\
                         <li><a href="store.html">Store</a></li>\
                         <li class="btn-dealer"><a href="find-a-dealer.html">Find Dealer</a></li>\
                     </ul>\
@@ -83,7 +83,17 @@
                             </ul>\
                         </li>\
                         <li><a href="events.html">Events</a></li>\
-                        <li><a href="support.html">Support</a></li>\
+                        <li><a href="support.html">Support</a><ul class="sub-menu">\
+                                <li class="menu-item"><a href="#">Schedule A Service</a></li>\
+                                <li class="menu-item"><a href="#">Services Performed</a></li>\
+                                <li class="menu-item"><a href="truck-preparation.html">Truck Preparation Guide</a></li>\
+                                <li class="menu-item"><a href="how-to-videos.html">Troubleshooting Videos</a></li>\
+                                <li class="menu-item"><a href="how-to-videos.html">How-To Videos</a></li>\
+                                <li class="menu-item"><a href="#">Load-Unload Videos</a></li>\
+                                <li class="menu-item"><a href="faq.html">FAQs  Fast Facts</a></li>\
+                                <li class="menu-item"><a href="owners-manual.html">Owners Manuals</a></li>\
+                                <li class="menu-item"><a href="#">Warranties</a></li>\
+                            </ul></li>\
                         <li><a href="store.html">Store</a></li>\
                         <li class="btn-dealer"><a href="find-a-dealer.html">Find Dealer</a></li>\
                     </ul>\
