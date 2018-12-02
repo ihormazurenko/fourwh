@@ -81,6 +81,11 @@ a.btn, .btn {
       padding: 13px 25px;
     }
   }
+  &.small {
+    padding: 9px 15px;
+    // font-size: 20px;
+    min-width: auto;
+  }
 }
 
 .main-nav > ul > li.btn-dealer a,

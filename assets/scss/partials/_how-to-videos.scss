@@ -1,5 +1,20 @@
 .section-how-videos  { 
    
+  .categories {
+	margin-bottom: 80px;
+	ul {
+		text-align: center;
+	}
+	li {
+		display: inline-block;
+	}
+	.btn {
+		
+		margin: 0 8px;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+	}
+  }	
 
   .list-item {
   	display: flex;
