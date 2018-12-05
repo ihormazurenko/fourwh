@@ -104,6 +104,10 @@
             if ($('.slider-hero .swiper-container').length) {
                 var heroSlider = new Swiper('.slider-hero .swiper-container', {
                     effect: 'fade',
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                    },
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
@@ -144,57 +148,71 @@
             }
 
             //for plan slider
-            if ($('.slider-plan')) {
+            if ($('.slider-plan .gallery-thumbs').length && $('.slider-plan .gallery-top').length) {
                 var planGalleryThumbs = new Swiper('.slider-plan .gallery-thumbs', {
                     // setWrapperSize: 500,
                     // height: 100,
                     spaceBetween: 20,
                     slidesPerView: 3,
-                    freeMode: true,
-                    watchSlidesVisibility: true,
-                    watchSlidesProgress: true,
+                    // centeredSlides: true,
+                    // freeMode: true,
+                    // watchSlidesVisibility: true,
+                    // watchSlidesProgress: true,
                     // centeredSlides: true
                 });
 
                 var planGalleryTop = new Swiper('.slider-plan .gallery-top', {
                     spaceBetween: 10,
                     centeredSlides: true,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
+                    // navigation: {
+                    //     nextEl: '.swiper-button-next',
+                    //     prevEl: '.swiper-button-prev',
+                    // },
                     thumbs: {
                         swiper: planGalleryThumbs
                     }
                 });
             }
-/*
 
+            //for vertical slider
+            if ($('.slider-vertical .gallery-right').length && $('.slider-vertical .gallery-thumbs-left').length) {
+                var verticalGalleryThumbs = new Swiper('.slider-vertical .gallery-thumbs-left', {
+                    direction: 'vertical',
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                    // centeredSlides: true,
+                    // freeMode: true,
+                    // watchSlidesVisibility: true,
+                    // watchSlidesProgress: true,
+                });
 
-            // loop
-            var galleryThumbs = new Swiper('.gallery-thumbs', {
-                spaceBetween: 10,
-                slidesPerView: 4,
-                loop: true,
-                freeMode: true,
-                loopedSlides: 5, //looped slides should be the same
-                watchSlidesVisibility: true,
-                watchSlidesProgress: true,
-            });
-            var galleryTop = new Swiper('.gallery-top', {
-                spaceBetween: 10,
-                loop:true,
-                loopedSlides: 5, //looped slides should be the same
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                thumbs: {
-                    swiper: galleryThumbs,
-                },
-            });
-            */
-        }
+                var varticalGallery = new Swiper('.slider-vertical .gallery-right', {
+                    // direction: 'vertical',
+                    spaceBetween: 20,
+                    centeredSlides: true,
+                    effect: 'fade',
+                    // navigation: {
+                    //     nextEl: '.swiper-button-next',
+                    //     prevEl: '.swiper-button-prev',
+                    // },
+                    thumbs: {
+                        swiper: verticalGalleryThumbs,
+                    }
+                });
+            }
+
+            //for swatch slider
+            if ($('.slider-swatch .swiper-container').length) {
+                    var heroSlider = new Swiper('.slider-swatch .swiper-container', {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        navigation: {
+                            nextEl: '.swiper-swatch-button-next',
+                            prevEl: '.swiper-swatch-button-prev',
+                        },
+                    });
+                }
+            }
 
 
         //for popup
@@ -247,30 +265,37 @@
             $('.select-truck-list input').on('change', function () {
                 var listType = $(this).closest('ul.select-truck-list'),
                     parentBox = $(this).parents('.section-select-truck'),
-                    bedLengthbox = parentBox.find('.choose-bed-length-box'),
+                    bedLengthBoxes = parentBox.find('.choose-bed-length-box'),
                     btnBox = parentBox.find('.select-truck-btn-box'),
                     truckLengthList = parentBox.find('.select-truck-list.bed-length');
 
                     if (!(listType.hasClass('bed-length'))) {
                         //select truck
                         var type = $(this).data('truckType'),
-                            currentlist = $('.select-truck-list.bed-length[data-truck-group="'+type+'"]');
+                            currentLengthBox = $('.choose-bed-length-box[data-truck-group="'+type+'"]');
 
                         btnBox.fadeOut();
-                        bedLengthbox.fadeIn(350);
+                        bedLengthBoxes.fadeOut();
                         truckLengthList.find('input').prop('checked', false);
-                        truckLengthList.fadeOut(350);
+                        // truckLengthList.fadeOut(350);
+
+                        currentLengthBox.fadeIn(350);
+
                         setTimeout(function () {
-                            currentlist.fadeIn(350);
+                            $('html, body').animate({
+                                scrollTop: currentLengthBox.offset().top - 300
+                            }, 1000);
                         }, 350);
 
-                        $('html, body').animate({
-                            scrollTop: bedLengthbox.offset().top - 300
-                        }, 1000);
 
                     } else {
                         //select bed length
                         btnBox.fadeIn(350);
+                        setTimeout(function () {
+                            $('html, body').animate({
+                                scrollTop: btnBox.offset().top - 300
+                            }, 1000);
+                        }, 350);
                     }
             });
         }
