@@ -150,24 +150,13 @@
             //for plan slider
             if ($('.slider-plan .gallery-thumbs').length && $('.slider-plan .gallery-top').length) {
                 var planGalleryThumbs = new Swiper('.slider-plan .gallery-thumbs', {
-                    // setWrapperSize: 500,
-                    // height: 100,
                     spaceBetween: 20,
                     slidesPerView: 3,
-                    // centeredSlides: true,
-                    // freeMode: true,
-                    // watchSlidesVisibility: true,
-                    // watchSlidesProgress: true,
-                    // centeredSlides: true
                 });
 
                 var planGalleryTop = new Swiper('.slider-plan .gallery-top', {
                     spaceBetween: 10,
                     centeredSlides: true,
-                    // navigation: {
-                    //     nextEl: '.swiper-button-next',
-                    //     prevEl: '.swiper-button-prev',
-                    // },
                     thumbs: {
                         swiper: planGalleryThumbs
                     }
@@ -180,24 +169,28 @@
                     direction: 'vertical',
                     slidesPerView: 5,
                     spaceBetween: 20,
-                    // centeredSlides: true,
-                    // freeMode: true,
-                    // watchSlidesVisibility: true,
-                    // watchSlidesProgress: true,
+                    breakpoints: {
+                        991: {
+                            slidesPerView: 4
+                        },
+                        860: {
+                            slidesPerView: 3
+                        },
+                        640: {
+                            direction: 'horizontal',
+                            slidesPerView: 3
+                        }
+                    }
                 });
 
                 var varticalGallery = new Swiper('.slider-vertical .gallery-right', {
-                    // direction: 'vertical',
                     spaceBetween: 20,
                     centeredSlides: true,
                     effect: 'fade',
-                    // navigation: {
-                    //     nextEl: '.swiper-button-next',
-                    //     prevEl: '.swiper-button-prev',
-                    // },
                     thumbs: {
                         swiper: verticalGalleryThumbs,
-                    }
+                    },
+
                 });
             }
 
@@ -210,6 +203,14 @@
                             nextEl: '.swiper-swatch-button-next',
                             prevEl: '.swiper-swatch-button-prev',
                         },
+                        breakpoints: {
+                            767: {
+                                slidesPerView: 2
+                            },
+                            480: {
+                                slidesPerView: 1
+                            }
+                        }
                     });
                 }
             }
@@ -328,7 +329,7 @@
         }
 
         // for anchor nav
-        var stickyNav = $('.anchor-nav-box.build');
+        var stickyNav = $('.anchor-nav-box');
 
         if (stickyNav && stickyNav.length) {
             var offset = stickyNav.offset().top,
@@ -342,9 +343,10 @@
                         var currLink = $(this);
                         var refElement = $(currLink.attr("href")),
                             header = $('#header-main'),
-                            anchorNav = $('.anchor-nav-box'),
+                            // anchorNav = $('.anchor-nav-box'),
                             headerHeight = header.outerHeight(),
-                            anchorNavHeight = anchorNav.outerHeight(),
+                            anchorNavHeight = stickyNav.outerHeight(),
+                            anchorNavOffset = stickyNav.offset().top
                             offset = 0;
 
                         if (refElement && refElement.length) {
@@ -354,7 +356,9 @@
                                 offset =  anchorNavHeight + 50;
                             }
 
-                            var currSection = (refElement.position().top <= (scrollPos + offset)) && (refElement.position().top + refElement.outerHeight(true)) > (scrollPos + offset);
+                            var currSection = (refElement.offset().top <= (scrollPos + offset)) && (refElement.offset().top + refElement.outerHeight(true)) > (scrollPos + offset);
+
+
                             if (currSection) {
                                 stickyNavLinks.removeClass("active");
                                 currLink.addClass("active");
@@ -362,6 +366,8 @@
                             else {
                                 currLink.removeClass("active");
                             }
+
+                            console.log(refElement.position().top);
                         }
                     });
                 }
@@ -377,7 +383,7 @@
                 html = $('html'),
                 body = $('body'),
                 header = $('#header-main'),
-                anchorNav = $('.anchor-nav-box.build'),
+                anchorNav = $('.anchor-nav-box'),
                 lastScrollTop = 0;
 
             $window.on('load resize', function () {
@@ -393,10 +399,14 @@
                         anchorNavHeight = anchorNav.outerHeight();
 
                     if (anchorNav.length) {
-                        var anchorNavOffset = anchorNav.offset().top;
+                        if (anchorNav.hasClass('.details')) {
+                            var anchorNavOffset = anchorNav.offset().top - 40;
+                        } else {
+                            var anchorNavOffset = anchorNav.offset().top;
+                        }
                     }
 
-                    if (currentPos > headerHeight) {
+                    if (currentPos > anchorNavOffset) {
                         setTimeout(function () {
                             if (!(anchorNav.hasClass('affix'))) {
                                 anchorNav.addClass('affix');
@@ -428,7 +438,7 @@
 
                                 //for anchor nav
                                 if (anchorNav.length) {
-                                    var anchorNavTrigger = headerHeight - 65;
+                                    var anchorNavTrigger = anchorNavOffset - 65;
 
                                     if (top < anchorNavTrigger) {
                                         if (anchorNav.hasClass('affix')) {
@@ -444,19 +454,21 @@
                                         body.removeClass('direction-up').addClass('direction-down');
                                     }
                                 }
-                            }
 
-                            //for anchor nav
-                            if (anchorNav.length) {
-                                var anchorNavTrigger = anchorNavOffset;
+                                //for anchor nav
+                                if (anchorNav.length) {
+                                    var anchorNavTrigger = anchorNavOffset;
 
-                                if (top > anchorNavTrigger) {
-                                    if (!(anchorNav.hasClass('affix'))) {
-                                        anchorNav.addClass('affix');
-                                        anchorNav.next().css('margin-top', anchorNavHeight);
+                                    if (top > anchorNavTrigger) {
+                                        if (!(anchorNav.hasClass('affix'))) {
+                                            anchorNav.addClass('affix');
+                                            anchorNav.next().css('margin-top', anchorNavHeight);
+                                        }
                                     }
                                 }
                             }
+
+
 
                             lastScrollTop = top;
                         });
@@ -484,7 +496,7 @@
 
                                 //for anchor nav
                                 if (anchorNav.length) {
-                                    var anchorNavTrigger = headerHeight;
+                                    var anchorNavTrigger = anchorNavOffset;
 
                                     if (top < anchorNavTrigger) {
                                         if (anchorNav.hasClass('affix')) {
