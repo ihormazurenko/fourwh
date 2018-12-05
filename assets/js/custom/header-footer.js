@@ -13,7 +13,7 @@
                 </div>\
                 <nav class="main-nav desktop">\
                     <ul>\
-                        <li><a href="index.html"><span class="icon-skiing"></span> My Life</a></li>\
+                        <li><a href="dev-sitemap.html"><span class="icon-skiing"></span> My Life</a></li>\
                         <li><a href="campers.html">Campers</a></li>\
                         <li><a href="financing.html">Financing</a>\
                             <ul class="sub-menu">\
