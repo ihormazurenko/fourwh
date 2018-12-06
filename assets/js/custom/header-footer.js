@@ -119,22 +119,22 @@
                     <li>\
                         <div class="footer-box">\
                             <a href="#" class="footer-title">Contact us</a>\
-                            <a href="#" class="footer-link">Find a Dealer</a>\
                             <a href="#" class="footer-link">Factory</a>\
                             <a href="#" class="footer-link">Service</a>\
-                            <a href="#" class="footer-link">Media</a>\
-                            <a href="#" class="footer-link">Influencers</a>\
+                            <a href="#" class="footer-link">Find a Dealer</a>\
                             <a href="#" class="footer-link">Dealer Inquiries</a>\
+                            <a href="#" class="footer-link">Influencers</a>\
+                            <a href="#" class="footer-link">Media</a>\
                         </div>\
                     </li>\
                     <li>\
                         <div class="footer-box">\
                             <a href="#" class="footer-title">News</a>\
-                            <a href="#" class="footer-link">Trade Show & Event Calendar</a>\
-                            <a href="#" class="footer-link">Articles</a>\
-                            <a href="#" class="footer-link">Owner Rallies</a>\
+                            <a href="#" class="footer-link">Event Calendar</a>\
+                            <a href="#" class="footer-link">Articles & Reviews</a>\
+                            <a href="#" class="footer-link">Photo Contest</a>\
                             <a href="#" class="footer-link">Photos</a>\
-                            <a href="#" class="footer-link">Stories</a>\
+                            <a href="#" class="footer-link">Travel Stories</a>\
                             <a href="#" class="footer-link">Updates</a>\
                         </div>\
                     </li>\
