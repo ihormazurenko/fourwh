@@ -95,6 +95,17 @@
             }, 50);
         }
 
+        if ($('.inventory-list .inner-content-wrap').length) {
+            setTimeout(function () {
+                $('.inventory-list .inner-content-wrap').niceScroll({
+                    cursoropacitymin: 0.5,
+                    cursoropacitymax: 0.8,
+                    cursorcolor:"#62666a",
+                    cursorwidth:"6px",
+                });
+            }, 50);
+        }
+
         //for sliders
         if (typeof Swiper !== 'undefined') {
             //for hero slider
@@ -246,10 +257,10 @@
         }
 
         //for More Info btn
-        if (($('.service-box').length || $('.item-box').length) && $('.more-info-btn').length) {
+        if (($('.service-box').length || $('.item-box').length || $('.product-box').length || $('.inventory-detail-box').length) && $('.more-info-btn').length) {
             $('.more-info-btn').on('click', function (e) {
                 e.preventDefault();
-
+                console.log('click');
                 if ($(this).hasClass('open')) {
                     $(this).removeClass('open').next('.more').slideUp(350);
                 } else {
